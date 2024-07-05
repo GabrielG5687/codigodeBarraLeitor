@@ -9,7 +9,6 @@
 
 <body>
 
-    
     <div id="camera"></div>
     <div id="resultado">Codigo de barra</div>
     <script src="quagga.min.js"></script>
@@ -31,14 +30,11 @@
             console.log("Initialization finished. Ready to start");
             Quagga.start();
         });
-        const stopReader = () => {
-            Quagga.stop()
-        }
+
         Quagga.onDetected(function(data){
             console.log(data);
             var r = document.getElementById('resultado')
             r.innerHTML = `<p>${data.codeResult.code}</p>` //data.codeResult.code;
-            stopReader;
         });
     </script>
 </body>
