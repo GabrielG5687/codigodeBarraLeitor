@@ -1,0 +1,32 @@
+body{
+    background: rgb(177, 174, 174);
+    margin: 0;
+    font-family: serif;
+}
+
+.imagem{
+    width: 20%;
+}
+
+.buttonON{
+    border: none;
+    height: auto;
+    width:30%;
+    background: rgb(0, 81, 255);
+    cursor: pointer;
+    margin-bottom: 10%;
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+.buttonON:hover{
+    background: rgb(77, 133, 255);
+}
+.buttonON:active{
+    background-color: rgb(241, 241, 241);
+}
+#camera{
+    max-width: 600px;
+    margin-left: 20%;
+    margin-bottom: -70%;
+}

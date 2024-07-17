@@ -4,39 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta nome="viewport" content="width=device-width, initial-scale-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Ler bar code</title>
 </head>
 
 <body>
-
-    <div id="camera"></div>
-    <div id="resultado">Codigo de barra</div>
+    <main>
+        <button class="buttonON" id="ligar-camera">
+            <img class="imagem" src="camera.png" alt="iconeCamera">
+        </button>
+    </main>
+    <div id="camera">
+    </div>
     <script src="quagga.min.js"></script>
     <script>
-        Quagga.init({
-            inputStream: {
-                name: "Live",
-                type: "LiveStream",
-                target: document.querySelector('#camera')    // Or '#yourElement' (optional)
-            },
-            decoder: {
-                readers: ["ean_reader"]
-            }
-        }, function (err) {
-            if (err) {
-                console.log(err);
-                return
-            }
-            console.log("Initialization finished. Ready to start");
-            Quagga.start();
-        });
+        var cameraON = document.getElementById('ligar-camera')
 
-        Quagga.onDetected(function(data){
-            console.log(data);
-            var r = document.getElementById('resultado')
-            r.innerHTML = `<p>${data.codeResult.code}</p>` //data.codeResult.code;
-            Quagga.stop()
-        });
+        cameraON.addEventListener('click', clicar)
+        function clicar() {
+            Quagga.init({
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: document.querySelector('#camera')    // Or '#yourElement' (optional)
+                },
+                decoder: {
+                    readers: ["ean_reader"]
+                }
+            }, function (err) {
+                if (err) {
+                    console.log(err);
+                    return
+                }
+                console.log("Initialization finished. Ready to start");
+                Quagga.start();
+            });
+
+            Quagga.onDetected(function (data) {
+                console.log(data);
+                var r = document.getElementById('camera')
+                r.innerHTML = `<p>${data.codeResult.code}</p>` //data.codeResult.code;
+                Quagga.stop()
+            });
+
+        }
+
     </script>
 </body>
 
